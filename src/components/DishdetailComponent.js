@@ -54,12 +54,13 @@ import { Link } from 'react-router-dom';
     
    
     const DishDetail = (props) => {
+        if(props.dish != null)
        return (
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link  to="/menu">Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active >{props.dish.name}</BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
                         <h3>{props.dish.name}</h3>
@@ -72,6 +73,6 @@ import { Link } from 'react-router-dom';
                  </div>
             </div>
         );   
-    
+       
 }
 export default DishDetail;
