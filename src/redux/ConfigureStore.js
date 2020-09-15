@@ -1,5 +1,8 @@
 
 import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createForms} from 'react-redux-form';
+import {Feedbacks} from './feedbacks';
+import {initialFeedback} from './forms';
 import { Dishes } from './dishes';
 import { Comments } from './comments';
 import { Promotions } from './promotions';
@@ -13,7 +16,11 @@ export const ConfigStore = () => {
             dishes: Dishes,
             comments: Comments,
             promotions: Promotions,
-            leaders: Leaders
+            leaders: Leaders,
+            feedbacks: Feedbacks,
+            ...createForms({
+                feedback: initialFeedback 
+            })
         }),
         applyMiddleware(thunk, logger)
     );

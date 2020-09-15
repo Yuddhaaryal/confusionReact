@@ -19,11 +19,11 @@ class CommentForm extends Component {
     handleSubmit(values){
         this.toggleModal();
        
-        this.props.addComment(this.props.dishId, values.rating, values.name, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.name, values.comment);
     }
     render (){
         const required = (val) => val && val.length
-        const minLength = (min) => (val) =>(!(val && val.length) || val )&& val.length>=min
+        const minLength = (min) => (val) =>!(val && val.length) || val && val.length>=min
   
         const maxLength = (max) => (val) => !val || val.length<=max
         return(

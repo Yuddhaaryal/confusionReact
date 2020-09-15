@@ -5,6 +5,9 @@ import CommentForm from './CommentformComponent';
 import {Loading} from './LoadingComponent';
 
 
+import {baseUrl} from '../shared/baseUrl';
+
+
 
     function RenderDish({ dish }) {
      
@@ -12,7 +15,7 @@ import {Loading} from './LoadingComponent';
             return(
                 <div className="col-12 col-md-5 m-1">
                         <Card>
-                        <CardImg  width="100%" top src={dish.image} alt={dish.name}/>
+                        <CardImg  width="100%" top src={baseUrl+dish.image} alt={dish.name}/>
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                             <CardText>{dish.description}</CardText>
@@ -25,7 +28,7 @@ import {Loading} from './LoadingComponent';
             return (<div></div>);
         }
     }
-    const ShowDetails= ({comment,addComment, dishId}) => {
+    const ShowDetails= ({comment,postComment, dishId}) => {
         if(comment!=null){
             const dishDescription =comment.map((cmnt)=>{
            
@@ -46,7 +49,7 @@ import {Loading} from './LoadingComponent';
              <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 {dishDescription }
-                <CommentForm  dishId={dishId} addComment={addComment}/>
+                <CommentForm  dishId={dishId} postComment={postComment}/>
             </div>    
             );
         }
@@ -88,7 +91,9 @@ import {Loading} from './LoadingComponent';
                 </div>
                 <div className="row">
                  <RenderDish dish={props.dish} />
-                 <ShowDetails comment={props.comment}  addComment={props.addComment} dishId={props.dish.id}/>
+                 <ShowDetails comment={props.comment}
+                              postComment={props.postComment}
+                              dishId={props.dish.id}/>
                    
                   </div>
             </div>
